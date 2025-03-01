@@ -19,9 +19,8 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Products", href: "#products" },
+    { name: "Products", href: "#features" },
     { name: "About", href: "#about" },
-    { name: "Testimonials", href: "#testimonials" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -55,12 +54,6 @@ const Navbar = () => {
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <AnimatedButton variant="primary">
-            Get Started
-          </AnimatedButton>
-        </div>
-
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
@@ -88,11 +81,6 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <div className="mt-4">
-            <AnimatedButton variant="primary" className="w-full">
-              Get Started
-            </AnimatedButton>
-          </div>
         </nav>
       </div>
     </header>
