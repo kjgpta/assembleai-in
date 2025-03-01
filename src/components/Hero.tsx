@@ -1,12 +1,13 @@
 
 import React, { useEffect, useState, useRef } from "react";
-import { ArrowRight, Sparkles, Braces } from "lucide-react";
+import { ArrowRight, Sparkles, Braces, ChefHat, FileSearch } from "lucide-react";
 import AnimatedButton from "./ui/AnimatedButton";
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [typingComplete, setTypingComplete] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,10 +46,11 @@ const Hero = () => {
       ref={containerRef}
       className="relative min-h-screen flex items-center px-4 overflow-hidden"
       style={{ 
-        background: `radial-gradient(circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, rgba(139, 92, 246, 0.15), rgba(8, 15, 40, 0.05))` 
+        background: `radial-gradient(circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, rgba(139, 92, 246, 0.15), rgba(8, 15, 40, 0.05))`,
+        transition: 'background 0.3s ease-out'
       }}
     >
-      {/* Floating elements */}
+      {/* Floating elements with smoother animations */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(20)].map((_, index) => (
           <div 
@@ -63,7 +65,7 @@ const Hero = () => {
               transform: `translate3d(${(mousePosition.x - 0.5) * 20 * (index % 5 - 2)}px, ${(mousePosition.y - 0.5) * 20 * (index % 3 - 1)}px, 0)`,
               filter: `blur(${Math.random() * 40 + 5}px)`,
               opacity: Math.random() * 0.5 + 0.2,
-              transition: 'transform 0.1s ease-out',
+              transition: 'transform 0.3s ease-out',
             }}
           ></div>
         ))}
@@ -76,7 +78,7 @@ const Hero = () => {
               style={{ 
                 opacity: isLoaded ? 1 : 0,
                 transform: isLoaded ? 'translateY(0)' : 'translateY(30px)',
-                transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+                transition: 'opacity 1s ease-out, transform 1s ease-out',
               }}
             >
               <div className="inline-flex items-center mb-6">
@@ -84,12 +86,12 @@ const Hero = () => {
                   <Sparkles size={20} />
                 </div>
                 <span className="text-sm font-semibold bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-indigo-400">
-                  Experimental Build
+                  AI-Powered Projects
                 </span>
               </div>
               
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-700 dark:from-white dark:to-slate-300">
-                <span className="block">Next Generation</span>
+                <span className="block">GPT-Powered</span>
                 <div className="relative overflow-hidden h-[1.2em] mt-2">
                   <span 
                     className={`absolute bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-indigo-500 ${typingComplete ? '' : 'typewriter'}`}
@@ -97,7 +99,7 @@ const Hero = () => {
                       animation: typingComplete ? 'none' : 'typewriter 2s steps(20, end)'
                     }}
                   >
-                    Machine Learning
+                    Applications
                   </span>
                   {!typingComplete && (
                     <span className="absolute top-0 right-0 w-1 h-full bg-violet-600 animate-blink"></span>
@@ -106,26 +108,32 @@ const Hero = () => {
               </h1>
               
               <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-xl">
-                Building with cutting-edge AI technologies. This is a showcase of experimental features using advanced machine learning algorithms.
+                Explore innovative applications powered by GPT models, designed to solve real-world problems in cooking and recruitment.
               </p>
               
               <div className="flex flex-wrap gap-4">
                 <AnimatedButton 
                   variant="primary" 
                   size="lg"
-                  className="bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-700 hover:to-indigo-600"
+                  className="group bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-700 hover:to-indigo-600"
+                  onMouseEnter={() => setSelectedProject("recipe")}
+                  onClick={() => window.location.href = "/recipe-demo"}
                 >
-                  View Demo
+                  <ChefHat size={20} className="mr-2 transition-transform group-hover:rotate-12" />
+                  Recipe Generator
                   <ArrowRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
                 </AnimatedButton>
                 
                 <AnimatedButton
                   variant="outline"
                   size="lg"
-                  className="border-violet-200 text-violet-700 hover:bg-violet-50"
+                  className="group border-violet-200 text-violet-700 hover:bg-violet-50"
+                  onMouseEnter={() => setSelectedProject("resume")}
+                  onClick={() => window.location.href = "/resume-demo"}
                 >
-                  <Braces size={18} className="mr-2" />
-                  Source Code
+                  <FileSearch size={20} className="mr-2 transition-transform group-hover:rotate-12" />
+                  Resume Parser
+                  <ArrowRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
                 </AnimatedButton>
               </div>
             </div>
@@ -136,7 +144,7 @@ const Hero = () => {
               style={{ 
                 opacity: isLoaded ? 1 : 0,
                 transform: isLoaded ? 'translateY(0)' : 'translateY(30px)',
-                transition: 'opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s',
+                transition: 'opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s',
               }}
               className="relative"
             >
@@ -148,37 +156,67 @@ const Hero = () => {
                     <div className="w-3 h-3 rounded-full bg-amber-400"></div>
                     <div className="w-3 h-3 rounded-full bg-green-400"></div>
                   </div>
-                  <div className="ml-4 text-xs text-slate-500 dark:text-slate-400 font-mono">ai_model.py</div>
+                  <div className="ml-4 text-xs text-slate-500 dark:text-slate-400 font-mono">
+                    {selectedProject === "recipe" ? "recipe_generator.py" : 
+                     selectedProject === "resume" ? "resume_parser.py" : 
+                     "gpt_model.py"}
+                  </div>
                 </div>
                 
                 <div className="font-mono text-xs text-slate-800 dark:text-slate-300 pt-12 p-4 overflow-hidden h-72">
-                  <div className="animate-pulse mb-2 text-violet-600 dark:text-violet-400"># Neural Network Architecture</div>
-                  
-                  <div className="text-slate-500 dark:text-slate-400 mb-2">class <span className="text-indigo-600 dark:text-indigo-400">NeuralNetwork</span>(nn.Module):</div>
-                  
-                  <div className="ml-4 text-slate-500 dark:text-slate-400">def <span className="text-indigo-600 dark:text-indigo-400">__init__</span>(self):</div>
-                  <div className="ml-8 text-slate-500 dark:text-slate-400">super(NeuralNetwork, self).__init__()</div>
-                  <div className="ml-8 text-slate-500 dark:text-slate-400">self.layers = nn.Sequential(</div>
-                  <div className="ml-12 text-slate-500 dark:text-slate-400">nn.Linear(784, 512),</div>
-                  <div className="ml-12 text-slate-500 dark:text-slate-400">nn.ReLU(),</div>
-                  <div className="ml-12 text-slate-500 dark:text-slate-400">nn.Dropout(0.2),</div>
-                  <div className="ml-12 text-slate-500 dark:text-slate-400">nn.Linear(512, 256),</div>
-                  <div className="ml-12 text-slate-500 dark:text-slate-400">nn.ReLU(),</div>
-                  <div className="ml-12 text-slate-500 dark:text-slate-400">nn.Dropout(0.2),</div>
-                  <div className="ml-12 text-slate-500 dark:text-slate-400">nn.Linear(256, 128),</div>
-                  <div className="ml-12 text-slate-500 dark:text-slate-400">nn.ReLU(),</div>
-                  <div className="ml-12 text-slate-500 dark:text-slate-400">nn.Linear(128, 10)</div>
-                  <div className="ml-8 text-slate-500 dark:text-slate-400">)</div>
-                  
-                  <div className="mt-4 ml-4 text-slate-500 dark:text-slate-400">def <span className="text-indigo-600 dark:text-indigo-400">forward</span>(self, x):</div>
-                  <div className="ml-8 text-slate-500 dark:text-slate-400">x = x.view(-1, 784)</div>
-                  <div className="ml-8 text-slate-500 dark:text-slate-400">logits = self.layers(x)</div>
-                  <div className="ml-8 text-slate-500 dark:text-slate-400">return F.log_softmax(logits, dim=1)</div>
+                  {selectedProject === "recipe" ? (
+                    <>
+                      <div className="animate-pulse mb-2 text-violet-600 dark:text-violet-400"># Recipe Generator</div>
+                      <div className="text-slate-500 dark:text-slate-400 mb-2">def <span className="text-indigo-600 dark:text-indigo-400">generate_recipe</span>(ingredients, cuisine, dietary_restrictions):</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">"""Generate a recipe using GPT model"""</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">prompt = format_recipe_prompt(</div>
+                      <div className="ml-8 text-slate-500 dark:text-slate-400">ingredients=ingredients,</div>
+                      <div className="ml-8 text-slate-500 dark:text-slate-400">cuisine=cuisine,</div>
+                      <div className="ml-8 text-slate-500 dark:text-slate-400">restrictions=dietary_restrictions</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">)</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">response = gpt_model.generate(prompt)</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">return parse_recipe_response(response)</div>
+                    </>
+                  ) : selectedProject === "resume" ? (
+                    <>
+                      <div className="animate-pulse mb-2 text-violet-600 dark:text-violet-400"># Resume Parser</div>
+                      <div className="text-slate-500 dark:text-slate-400 mb-2">def <span className="text-indigo-600 dark:text-indigo-400">parse_resume</span>(resume_text):</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">"""Extract structured data from resume"""</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">prompt = format_resume_prompt(resume_text)</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">response = gpt_model.generate(prompt)</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">skills = extract_skills(response)</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">experience = extract_experience(response)</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">education = extract_education(response)</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">return {</div>
+                      <div className="ml-8 text-slate-500 dark:text-slate-400">"skills": skills,</div>
+                      <div className="ml-8 text-slate-500 dark:text-slate-400">"experience": experience,</div>
+                      <div className="ml-8 text-slate-500 dark:text-slate-400">"education": education</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">}</div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="animate-pulse mb-2 text-violet-600 dark:text-violet-400"># GPT Model Interface</div>
+                      <div className="text-slate-500 dark:text-slate-400 mb-2">class <span className="text-indigo-600 dark:text-indigo-400">GPTInterface</span>:</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">def __init__(self, model_name="gpt-4"):</div>
+                      <div className="ml-8 text-slate-500 dark:text-slate-400">self.model = model_name</div>
+                      <div className="ml-8 text-slate-500 dark:text-slate-400">self.temperature = 0.7</div>
+                      <div className="ml-8 text-slate-500 dark:text-slate-400">self.max_tokens = 1024</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">def generate(self, prompt):</div>
+                      <div className="ml-8 text-slate-500 dark:text-slate-400">"""Generate completion using GPT"""</div>
+                      <div className="ml-8 text-slate-500 dark:text-slate-400">response = call_openai_api(</div>
+                      <div className="ml-12 text-slate-500 dark:text-slate-400">model=self.model,</div>
+                      <div className="ml-12 text-slate-500 dark:text-slate-400">prompt=prompt,</div>
+                      <div className="ml-12 text-slate-500 dark:text-slate-400">temperature=self.temperature,</div>
+                      <div className="ml-12 text-slate-500 dark:text-slate-400">max_tokens=self.max_tokens</div>
+                      <div className="ml-8 text-slate-500 dark:text-slate-400">)</div>
+                      <div className="ml-8 text-slate-500 dark:text-slate-400">return process_response(response)</div>
+                    </>
+                  )}
                   
                   <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white dark:from-slate-900 to-transparent"></div>
                 </div>
                 
-                {/* Floating particles */}
+                {/* Floating particles with smoother animations */}
                 <div className="absolute inset-0 pointer-events-none">
                   {[...Array(10)].map((_, i) => (
                     <div 
@@ -188,7 +226,8 @@ const Hero = () => {
                         top: `${Math.random() * 100}%`,
                         left: `${Math.random() * 100}%`,
                         animation: `float ${2 + Math.random() * 3}s ease-in-out infinite alternate`,
-                        animationDelay: `${i * 0.2}s`
+                        animationDelay: `${i * 0.2}s`,
+                        transition: 'all 0.5s ease-out'
                       }}
                     ></div>
                   ))}

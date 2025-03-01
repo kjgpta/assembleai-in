@@ -1,6 +1,6 @@
 
 import React, { useRef, useEffect, useState } from "react";
-import { Terminal, GitBranch, Database, Bot, Brain, Layers, Lock, Activity } from "lucide-react";
+import { Chef, FileText, Filter, Code, PenSquare, Search, Pizza, Filter as FilterIcon, Briefcase } from "lucide-react";
 
 interface Feature {
   id: number;
@@ -9,6 +9,8 @@ interface Feature {
   icon: React.ReactNode;
   tags: string[];
   color: string;
+  demoUrl?: string;
+  codeUrl?: string;
 }
 
 const Products = () => {
@@ -41,67 +43,23 @@ const Products = () => {
   const features: Feature[] = [
     {
       id: 1,
-      title: "Neural Network Architecture",
-      description: "Custom neural network architecture with advanced layer configurations and optimization strategies.",
-      icon: <Brain size={24} />,
-      tags: ["Python", "PyTorch", "Research"],
-      color: "from-pink-500 to-rose-500"
+      title: "AI Recipe Maker",
+      description: "Create custom recipes based on available ingredients, cuisine preferences, nutritional goals, and dietary restrictions using advanced GPT models.",
+      icon: <Chef size={24} />,
+      tags: ["GPT", "Food", "Personalization"],
+      color: "from-green-500 to-emerald-600",
+      demoUrl: "/recipe-demo",
+      codeUrl: "https://github.com/yourname/recipe-maker"
     },
     {
       id: 2,
-      title: "Training Pipeline",
-      description: "End-to-end training pipeline with data preprocessing, augmentation, and validation procedures.",
-      icon: <Layers size={24} />,
-      tags: ["Python", "ML", "Pipeline"],
-      color: "from-amber-500 to-orange-600"
-    },
-    {
-      id: 3,
-      title: "Inference API",
-      description: "High-performance REST API for model inference with batching and caching capabilities.",
-      icon: <Terminal size={24} />,
-      tags: ["FastAPI", "API", "Deployment"],
-      color: "from-cyan-500 to-blue-600"
-    },
-    {
-      id: 4,
-      title: "Data Collection System",
-      description: "Automated data collection and preprocessing system for continuous model improvement.",
-      icon: <Database size={24} />,
-      tags: ["Data", "ETL", "Python"],
-      color: "from-green-500 to-emerald-600"
-    },
-    {
-      id: 5,
-      title: "Experiment Tracking",
-      description: "Comprehensive experiment tracking with parameter logging, metrics, and result visualization.",
-      icon: <Activity size={24} />,
-      tags: ["MLflow", "Research", "Monitoring"],
-      color: "from-violet-500 to-purple-600"
-    },
-    {
-      id: 6,
-      title: "Model Versioning",
-      description: "Robust versioning system for models, datasets, and code to ensure reproducibility.",
-      icon: <GitBranch size={24} />,
-      tags: ["DevOps", "Git", "CI/CD"],
-      color: "from-slate-500 to-slate-700"
-    },
-    {
-      id: 7,
-      title: "Conversational Agent",
-      description: "Interactive conversational agent built using advanced language models with context management.",
-      icon: <Bot size={24} />,
-      tags: ["NLP", "Python", "API"],
-      color: "from-blue-500 to-indigo-600"
-    },
-    {
-      id: 8,
-      title: "Security Layer",
-      description: "Comprehensive security implementation with encryption, authentication, and access controls.",
-      icon: <Lock size={24} />,
-      tags: ["Security", "DevOps", "API"],
-      color: "from-red-500 to-red-700"
+      title: "Resume Parser",
+      description: "AI-powered resume analysis tool that helps recruiters parse CVs, extract key information, and generate additional screening questions.",
+      icon: <FileText size={24} />,
+      tags: ["GPT", "HR", "Recruitment"],
+      color: "from-blue-500 to-indigo-600",
+      demoUrl: "/resume-demo",
+      codeUrl: "https://github.com/yourname/resume-parser"
     }
   ];
 
@@ -121,20 +79,6 @@ const Products = () => {
         feature.tags.some(tag => activeFilters.includes(tag))
       );
 
-  // Helper function to extract color values from Tailwind classes
-  const getColorFromClass = (colorClass: string): string => {
-    // Extract color name and shade from Tailwind classes
-    const fromMatch = colorClass.match(/from-([a-z]+-[0-9]+)/);
-    const toMatch = colorClass.match(/to-([a-z]+-[0-9]+)/);
-    
-    const fromColor = fromMatch ? fromMatch[1] : "blue-500";
-    const toColor = toMatch ? toMatch[1] : "indigo-600";
-    
-    // Return CSS variables that correspond to Tailwind colors
-    // These will be handled by the className with bg-gradient-to-br instead
-    return `${fromColor} ${toColor}`;
-  };
-
   return (
     <section id="features" ref={sectionRef} className="py-24 px-4 bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto max-w-6xl">
@@ -147,7 +91,7 @@ const Products = () => {
               transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
             }}
           >
-            Technical Capabilities
+            AI Projects
           </h2>
           <p 
             className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
@@ -157,7 +101,7 @@ const Products = () => {
               transition: 'opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s',
             }}
           >
-            Showcasing the core technical components of this machine learning system
+            Experimental applications using advanced GPT models
           </p>
         </div>
 
@@ -194,7 +138,7 @@ const Products = () => {
         </div>
 
         <div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
           style={{ 
             opacity: isVisible ? 1 : 0,
             transition: 'opacity 0.8s ease-out 0.4s',
@@ -205,26 +149,26 @@ const Products = () => {
               key={feature.id}
               onMouseEnter={() => setHoveredItem(feature.id)}
               onMouseLeave={() => setHoveredItem(null)}
-              className="relative bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+              className="relative bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500"
               style={{ 
                 transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
                 opacity: isVisible ? 1 : 0,
-                transition: `transform 0.8s ease-out ${0.4 + index * 0.1}s, opacity 0.8s ease-out ${0.4 + index * 0.1}s, box-shadow 0.3s ease-out`,
+                transition: `transform 0.8s ease-out ${0.4 + index * 0.1}s, opacity 0.8s ease-out ${0.4 + index * 0.1}s, box-shadow 0.5s ease-out`,
               }}
             >
               <div className={`h-2 bg-gradient-to-r ${feature.color}`}></div>
-              <div className="p-6">
-                <div className="flex items-start mb-4">
-                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center text-white bg-gradient-to-br ${feature.color}`}>
+              <div className="p-8">
+                <div className="flex items-start mb-6">
+                  <div className={`w-14 h-14 rounded-lg flex items-center justify-center text-white bg-gradient-to-br ${feature.color}`}>
                     {feature.icon}
                   </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">{feature.title}</h3>
-                    <div className="flex flex-wrap gap-1 mt-1">
+                  <div className="ml-5">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{feature.title}</h3>
+                    <div className="flex flex-wrap gap-1.5">
                       {feature.tags.map(tag => (
                         <span 
                           key={tag} 
-                          className="text-xs px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300"
+                          className="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300"
                         >
                           {tag}
                         </span>
@@ -232,12 +176,31 @@ const Products = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-slate-600 dark:text-slate-300">{feature.description}</p>
+                
+                <p className="text-slate-600 dark:text-slate-300 mb-8">{feature.description}</p>
+                
+                <div className="flex gap-4">
+                  <a 
+                    href={feature.demoUrl} 
+                    className="group flex items-center px-4 py-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-700 hover:to-indigo-600 text-white rounded-md transition-all duration-300 shadow-md hover:shadow-lg"
+                  >
+                    <PenSquare size={18} className="mr-2 transition-transform group-hover:scale-110" />
+                    <span className="group-hover:translate-x-0.5 transition-transform">View Demo</span>
+                  </a>
+                  
+                  <a 
+                    href={feature.codeUrl} 
+                    className="group flex items-center px-4 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600 rounded-md transition-all duration-300"
+                  >
+                    <Code size={18} className="mr-2 transition-transform group-hover:rotate-12" />
+                    <span>Source Code</span>
+                  </a>
+                </div>
               </div>
               
               {/* Hover animation */}
               <div 
-                className={`absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 bg-gradient-to-br ${feature.color}`}
+                className={`absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 bg-gradient-to-br ${feature.color}`}
                 style={{ 
                   opacity: hoveredItem === feature.id ? 0.05 : 0,
                 }}
