@@ -187,11 +187,12 @@ const Hero = () => {
                       <div className="ml-4 text-slate-500 dark:text-slate-400">skills = extract_skills(response)</div>
                       <div className="ml-4 text-slate-500 dark:text-slate-400">experience = extract_experience(response)</div>
                       <div className="ml-4 text-slate-500 dark:text-slate-400">education = extract_education(response)</div>
-                      <div className="ml-4 text-slate-500 dark:text-slate-400">return {</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">return {"{"}
+                      </div>
                       <div className="ml-8 text-slate-500 dark:text-slate-400">"skills": skills,</div>
                       <div className="ml-8 text-slate-500 dark:text-slate-400">"experience": experience,</div>
                       <div className="ml-8 text-slate-500 dark:text-slate-400">"education": education</div>
-                      <div className="ml-4 text-slate-500 dark:text-slate-400">}</div>
+                      <div className="ml-4 text-slate-500 dark:text-slate-400">{"}"}</div>
                     </>
                   ) : (
                     <>
