@@ -121,6 +121,20 @@ const Products = () => {
         feature.tags.some(tag => activeFilters.includes(tag))
       );
 
+  // Helper function to extract color values from Tailwind classes
+  const getColorFromClass = (colorClass: string): string => {
+    // Extract color name and shade from Tailwind classes
+    const fromMatch = colorClass.match(/from-([a-z]+-[0-9]+)/);
+    const toMatch = colorClass.match(/to-([a-z]+-[0-9]+)/);
+    
+    const fromColor = fromMatch ? fromMatch[1] : "blue-500";
+    const toColor = toMatch ? toMatch[1] : "indigo-600";
+    
+    // Return CSS variables that correspond to Tailwind colors
+    // These will be handled by the className with bg-gradient-to-br instead
+    return `${fromColor} ${toColor}`;
+  };
+
   return (
     <section id="features" ref={sectionRef} className="py-24 px-4 bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto max-w-6xl">
@@ -223,12 +237,9 @@ const Products = () => {
               
               {/* Hover animation */}
               <div 
-                className="absolute inset-0 bg-gradient-to-br pointer-events-none opacity-0 transition-opacity duration-300"
+                className={`absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 bg-gradient-to-br ${feature.color}`}
                 style={{ 
                   opacity: hoveredItem === feature.id ? 0.05 : 0,
-                  background: `linear-gradient(135deg, var(--tw-gradient-stops))`,
-                  '--tw-gradient-from': feature.color.split(' ')[0].replace('from-', ''),
-                  '--tw-gradient-to': feature.color.split(' ')[1].replace('to-', '')
                 }}
               ></div>
             </div>
