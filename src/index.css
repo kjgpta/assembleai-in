@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
@@ -111,7 +110,7 @@
   .typewriter {
     overflow: hidden;
     white-space: nowrap;
-    animation: typewriter 3s steps(40, end) forwards;
+    animation: typewriter 2s steps(20, end) forwards;
     display: inline-block;
   }
   
@@ -146,52 +145,6 @@
     transform: scaleX(1);
     transform-origin: bottom left;
   }
-  
-  .shine-effect {
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    background-size: 200% 100%;
-    animation: background-shine 2s linear infinite;
-  }
-  
-  .parallax-section {
-    transform-style: preserve-3d;
-    perspective: 1000px;
-  }
-  
-  .parallax-layer {
-    transform: translateZ(0);
-    transition: transform 0.1s ease-out;
-  }
-  
-  .animated-gradient-text {
-    background-size: 400% 400%;
-    animation: gradient-shift 8s ease infinite;
-  }
-  
-  @keyframes gradient-shift {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-  }
-  
-  .reveal-on-scroll.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Observer for scroll animations */
@@ -220,6 +173,21 @@
 
 .animated-element.delay-800 {
   transition-delay: 0.8s;
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
 }
 
 /* Custom scroll bar */
