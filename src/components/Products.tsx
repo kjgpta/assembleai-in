@@ -1,6 +1,5 @@
-
 import React, { useRef, useEffect, useState } from "react";
-import { Chef, FileText, Filter, Code, PenSquare, Search, Pizza, Filter as FilterIcon, Briefcase } from "lucide-react";
+import { ChefHat, FileText, Filter, Code, PenSquare, Search, Pizza, Filter as FilterIcon, Briefcase } from "lucide-react";
 
 interface Feature {
   id: number;
@@ -45,7 +44,7 @@ const Products = () => {
       id: 1,
       title: "AI Recipe Maker",
       description: "Create custom recipes based on available ingredients, cuisine preferences, nutritional goals, and dietary restrictions using advanced GPT models.",
-      icon: <Chef size={24} />,
+      icon: <ChefHat size={24} />,
       tags: ["GPT", "Food", "Personalization"],
       color: "from-green-500 to-emerald-600",
       demoUrl: "/recipe-demo",
