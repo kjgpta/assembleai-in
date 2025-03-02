@@ -46,7 +46,7 @@ const About = () => {
     {
       icon: <BarChart3 size={24} />,
       title: "Results-Driven",
-      description: "Our solutions are designed to deliver measurable results and ROI for your business.",
+      description: "Our solutions are designed to deliver measurable results.",
     },
   ];
 
