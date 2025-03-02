@@ -1,6 +1,6 @@
 
 import React, { useRef, useEffect, useState } from "react";
-import { CheckCircle, Users, Rocket, BarChart3 } from "lucide-react";
+import { CheckCircle, Users, Rocket, BarChart3, Github } from "lucide-react";
 
 const About = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -37,6 +37,11 @@ const About = () => {
       icon: <Rocket size={24} />,
       title: "Innovation",
       description: "We're constantly pushing the boundaries of what's possible with machine learning and AI.",
+    },
+    {
+      icon: <Github size={24} />,
+      title: "Open Source",
+      description: "All our projects are open-sourced, allowing for community collaboration and transparency.",
     },
     {
       icon: <BarChart3 size={24} />,

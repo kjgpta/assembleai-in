@@ -1,5 +1,6 @@
+
 import React, { useRef, useEffect, useState } from "react";
-import { ChefHat, FileText, Filter, Code, PenSquare, Search, Pizza, Filter as FilterIcon, Briefcase } from "lucide-react";
+import { ChefHat, FileText, Filter, Code, PenSquare, Search, Github } from "lucide-react";
 
 interface Feature {
   id: number;
@@ -79,7 +80,7 @@ const Products = () => {
       );
 
   return (
-    <section id="features" ref={sectionRef} className="py-24 px-4 bg-slate-50 dark:bg-slate-900">
+    <section id="products" ref={sectionRef} className="py-24 px-4 bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 
@@ -90,7 +91,7 @@ const Products = () => {
               transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
             }}
           >
-            AI Projects
+            Open Source AI Projects
           </h2>
           <p 
             className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
@@ -100,7 +101,7 @@ const Products = () => {
               transition: 'opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s',
             }}
           >
-            Experimental applications using advanced GPT models
+            Experimental applications using advanced GPT models - 100% open source
           </p>
         </div>
 
@@ -148,7 +149,7 @@ const Products = () => {
               key={feature.id}
               onMouseEnter={() => setHoveredItem(feature.id)}
               onMouseLeave={() => setHoveredItem(null)}
-              className="relative bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500"
+              className="relative bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 apple-card"
               style={{ 
                 transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
                 opacity: isVisible ? 1 : 0,
@@ -191,7 +192,7 @@ const Products = () => {
                     href={feature.codeUrl} 
                     className="group flex items-center px-4 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600 rounded-md transition-all duration-300"
                   >
-                    <Code size={18} className="mr-2 transition-transform group-hover:rotate-12" />
+                    <Github size={18} className="mr-2 transition-transform group-hover:rotate-12" />
                     <span>Source Code</span>
                   </a>
                 </div>

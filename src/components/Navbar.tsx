@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Brain } from "lucide-react";
 import AnimatedButton from "./ui/AnimatedButton";
 
 const Navbar = () => {
@@ -41,18 +41,27 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-sm font-medium hover:text-primary transition-colors duration-200 animated-underline"
-            >
-              {link.name}
-            </a>
-          ))}
+        {/* Desktop Navigation - Centered */}
+        <nav className="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
+          <div className="flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-sm font-medium hover:text-primary transition-colors duration-200 animated-underline"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
         </nav>
+
+        {/* AI Icon in the corner */}
+        <div className="hidden md:flex items-center">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-r from-violet-500 to-blue-500 flex items-center justify-center text-white animate-pulse-soft">
+            <Brain size={20} />
+          </div>
+        </div>
 
         {/* Mobile Menu Button */}
         <button
