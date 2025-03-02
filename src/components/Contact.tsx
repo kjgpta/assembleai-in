@@ -68,38 +68,41 @@ const Contact = () => {
   }, []);
 
   const contactInfo = [
-    {
-      icon: <MapPin size={20} />,
-      label: "Address",
-      value: "123 Innovation Way, Tech Valley, CA 94103",
-    },
+    // {
+    //   icon: <MapPin size={20} />,
+    //   label: "Address",
+    //   value: "Madhapur, Hyderabad, India",
+    // },
     {
       icon: <Mail size={20} />,
       label: "Email",
-      value: "contact@gptastic.com",
+      value: "mailguptakshitij@gmail.com",
     },
-    {
-      icon: <Phone size={20} />,
-      label: "Phone",
-      value: "+1 (555) 123-4567",
-    },
+    // {
+    //   icon: <Phone size={20} />,
+    //   label: "Phone",
+    //   value: "+91 941-0653-607",
+    // },
   ];
 
   return (
     <section id="contact" ref={contactRef} className="section-padding bg-gray-50">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16 animated-element">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-600 animate-fade-up">
-            Contact Us
+      <div className="text-center mb-16">
+          <h2 
+            className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300"
+            style={{ 
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+            }}
+          >
+            Got any questions and ideas? Let's talk!
           </h2>
-          <div className="w-24 h-1 mx-auto bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mb-6 animate-scale-in"></div>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto animate-fade-in">
-            Have questions about our AI tools or interested in a custom solution? Contact us today.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          {/* <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10 hover:shadow-xl transition-all duration-500">
               <h3 className="text-2xl font-bold mb-6 text-gray-800">Send Us a Message</h3>
               
@@ -184,11 +187,11 @@ const Contact = () => {
                 </div>
               </form>
             </div>
-          </div>
+          </div> */}
           
-          <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            <div className="bg-gradient-to-br from-primary to-blue-600 text-white rounded-2xl shadow-lg p-8 md:p-10 h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
-              <h3 className="text-2xl font-bold mb-8">Contact Information</h3>
+          <div className={`transition-all duration-700 delay-300 lg:col-span-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <div className="bg-gradient-to-br from-primary to-blue-600 text-white justify-center rounded-2xl shadow-lg p-8 md:p-10 h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
+              {/* <h3 className="text-2xl font-bold mb-8 text-center">Contact Information</h3> */}
               
               <div className="space-y-8">
                 {contactInfo.map((info, index) => (
@@ -204,11 +207,11 @@ const Contact = () => {
                 ))}
               </div>
               
-              <div className="mt-12">
+              {/* <div className="mt-12">
                 <h4 className="text-lg font-semibold mb-4">Office Hours</h4>
                 <p className="mb-2">Monday - Friday: 9:00 AM - 6:00 PM</p>
                 <p>Saturday - Sunday: Closed</p>
-              </div>
+              </div> */}
               
               <div className="absolute bottom-8 right-8 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
             </div>

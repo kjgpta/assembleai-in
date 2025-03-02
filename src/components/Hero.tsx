@@ -108,10 +108,10 @@ const Hero = () => {
               </h1>
               
               <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-xl">
-                Explore innovative applications powered by GPT models, designed to solve real-world problems in cooking and recruitment.
+                Explore innovative applications powered by GPT models, designed to solve real-world problems.
               </p>
               
-              <div className="flex flex-wrap gap-4">
+              {/* <div className="flex flex-wrap gap-4">
                 <AnimatedButton 
                   variant="primary" 
                   size="lg"
@@ -135,7 +135,7 @@ const Hero = () => {
                   Resume Parser
                   <ArrowRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
                 </AnimatedButton>
-              </div>
+              </div> */}
             </div>
           </div>
           

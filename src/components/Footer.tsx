@@ -9,10 +9,8 @@ const Footer = () => {
     {
       title: "Products",
       links: [
-        { label: "GPT Text Generation", href: "#" },
-        { label: "Code Analysis", href: "#" },
-        { label: "Data Processing", href: "#" },
-        { label: "Conversational AI", href: "#" },
+        { label: "SmartChef", href: "https://smartchef.assembleai.in/" },
+        { label: "Insight", href: "https://insight.assembleai.in/" },
       ],
     },
   ];
@@ -25,13 +23,13 @@ const Footer = () => {
             <div className="mb-6">
               <a href="/" className="inline-flex items-center gap-2">
                 <span className="font-display font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-blue-500">
-                  GPTastic
+                  Assemble AI
                 </span>
               </a>
             </div>
             
             <p className="text-muted-foreground mb-6 max-w-md">
-              Empowering businesses with cutting-edge GPT and machine learning tools to drive innovation and solve complex problems.
+            Empowering the future with cutting-edge GPT and machine learning tools to drive innovation and solve complex problems.
             </p>
             
             {/* Social media links commented out
@@ -90,7 +88,7 @@ const Footer = () => {
         <div className="pt-8 border-t">
           <div className="flex justify-center items-center">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} GPTastic. All rights reserved.
+              © {currentYear} Assemble AI. All rights reserved.
             </p>
           </div>
         </div>

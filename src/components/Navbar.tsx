@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <a href="/" className="inline-flex items-center gap-2">
             <span className="font-display font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-blue-400">
-              GPTastic
+              Assemble AI
             </span>
           </a>
         </div>

@@ -43,23 +43,23 @@ const Products = () => {
   const features: Feature[] = [
     {
       id: 1,
-      title: "AI Recipe Maker",
+      title: "Smartchef",
       description: "Create custom recipes based on available ingredients, cuisine preferences, nutritional goals, and dietary restrictions using advanced GPT models.",
       icon: <ChefHat size={24} />,
       tags: ["GPT", "Food", "Personalization"],
       color: "from-green-500 to-emerald-600",
-      demoUrl: "/recipe-demo",
-      codeUrl: "https://github.com/yourname/recipe-maker"
+      demoUrl: "https://smartchef.assembleai.in/",
+      codeUrl: "https://github.com/kjgpta/veggie-dish-discovery.git"
     },
     {
       id: 2,
-      title: "Resume Parser",
+      title: "Insight",
       description: "AI-powered resume analysis tool that helps recruiters parse CVs, extract key information, and generate additional screening questions.",
       icon: <FileText size={24} />,
       tags: ["GPT", "HR", "Recruitment"],
       color: "from-blue-500 to-indigo-600",
-      demoUrl: "/resume-demo",
-      codeUrl: "https://github.com/yourname/resume-parser"
+      demoUrl: "https://insight.assembleai.in/",
+      codeUrl: "https://github.com/kjgpta/Resume-Reader.git"
     }
   ];
 
@@ -91,7 +91,7 @@ const Products = () => {
               transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
             }}
           >
-            Open Source AI Projects
+            Open Source Projects
           </h2>
           <p 
             className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
@@ -185,7 +185,7 @@ const Products = () => {
                     className="group flex items-center px-4 py-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-700 hover:to-indigo-600 text-white rounded-md transition-all duration-300 shadow-md hover:shadow-lg"
                   >
                     <PenSquare size={18} className="mr-2 transition-transform group-hover:scale-110" />
-                    <span className="group-hover:translate-x-0.5 transition-transform">View Demo</span>
+                    <span className="group-hover:translate-x-0.5 transition-transform">Check it Out!</span>
                   </a>
                   
                   <a 

@@ -1,6 +1,6 @@
 
 import React, { useRef, useEffect, useState } from "react";
-import { CheckCircle, Users, Rocket, BarChart3, Github } from "lucide-react";
+import { CheckCircle, Headset, Rocket, BarChart3, Github } from "lucide-react";
 
 const About = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -29,9 +29,9 @@ const About = () => {
 
   const features = [
     {
-      icon: <Users size={24} />,
-      title: "Expert Team",
-      description: "Our team of AI experts and data scientists is dedicated to developing cutting-edge solutions.",
+        icon: <Headset size={24} />,
+        title: "Customer Focus",
+        description: "Our top priority is customer satisfaction, ensuring every solution is tailored to your needs.",
     },
     {
       icon: <Rocket size={24} />,
@@ -53,16 +53,21 @@ const About = () => {
   return (
     <section id="about" ref={aboutRef} className="section-padding bg-white">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16 animated-element">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-600 animate-fade-up">
+      <div className="text-center mb-16">
+          <h2 
+            className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300"
+            style={{ 
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+            }}
+          >
             About Us
           </h2>
-          <div className="w-24 h-1 mx-auto bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mb-6 animate-scale-in"></div>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto animate-fade-in">
-            Pushing the boundaries of what's possible with AI technology
-          </p>
         </div>
-        
+        <p className="text-lg text-gray-500 mb-8 text-center">
+                We're on a mission to make advanced AI technology accessible to everyone. Our tools are designed to be powerful yet intuitive, helping you harness the full potential of machine learning.
+              </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
@@ -76,7 +81,7 @@ const About = () => {
                     className="object-cover h-full w-full transition-transform duration-700 hover:scale-105"
                   />
                   
-                  <div className="absolute left-0 right-0 bottom-0 p-6 z-20">
+                  {/* <div className="absolute left-0 right-0 bottom-0 p-6 z-20">
                     <div className="glassmorphism rounded-xl p-4 backdrop-blur-md bg-white/20 transform hover:translate-y-[-5px] transition-transform">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
@@ -88,7 +93,7 @@ const About = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -96,13 +101,11 @@ const About = () => {
           
           <div>
             <div className={`transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+              {/* <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
                 Revolutionizing Industries with AI Technology
-              </h2>
+              </h2> */}
               
-              <p className="text-lg text-gray-500 mb-8">
-                We're on a mission to make advanced AI technology accessible to businesses of all sizes. Our tools are designed to be powerful yet intuitive, helping you harness the full potential of machine learning.
-              </p>
+              
               
               <div className="space-y-6">
                 {features.map((feature, index) => (
