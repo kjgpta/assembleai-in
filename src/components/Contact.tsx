@@ -68,27 +68,17 @@ const Contact = () => {
   }, []);
 
   const contactInfo = [
-    // {
-    //   icon: <MapPin size={20} />,
-    //   label: "Address",
-    //   value: "Madhapur, Hyderabad, India",
-    // },
     {
       icon: <Mail size={20} />,
       label: "Email",
       value: "mailguptakshitij@gmail.com",
     },
-    // {
-    //   icon: <Phone size={20} />,
-    //   label: "Phone",
-    //   value: "+91 941-0653-607",
-    // },
   ];
 
   return (
     <section id="contact" ref={contactRef} className="section-padding bg-gray-50">
       <div className="container mx-auto max-w-6xl">
-      <div className="text-center mb-16">
+        <div className="text-center mb-16">
           <h2 
             className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300"
             style={{ 
@@ -101,98 +91,13 @@ const Contact = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10 hover:shadow-xl transition-all duration-500">
-              <h3 className="text-2xl font-bold mb-6 text-gray-800">Send Us a Message</h3>
-              
-              <form onSubmit={handleSubmit}>
-                <div className="space-y-6">
-                  <div className="relative">
-                    <label 
-                      htmlFor="name"
-                      className={`absolute left-3 transition-all duration-200 ${
-                        focused.name ? 'text-xs -top-2 text-primary z-10 bg-white px-1' : 'text-muted-foreground top-3'
-                      }`}
-                    >
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formState.name}
-                      onChange={handleChange}
-                      onFocus={() => handleFocus('name')}
-                      onBlur={() => handleBlur('name')}
-                      required
-                      className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
-                    />
-                  </div>
-                  
-                  <div className="relative">
-                    <label 
-                      htmlFor="email"
-                      className={`absolute left-3 transition-all duration-200 ${
-                        focused.email ? 'text-xs -top-2 text-primary z-10 bg-white px-1' : 'text-muted-foreground top-3'
-                      }`}
-                    >
-                      Your Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formState.email}
-                      onChange={handleChange}
-                      onFocus={() => handleFocus('email')}
-                      onBlur={() => handleBlur('email')}
-                      required
-                      className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none"
-                    />
-                  </div>
-                  
-                  <div className="relative">
-                    <label 
-                      htmlFor="message"
-                      className={`absolute left-3 transition-all duration-200 ${
-                        focused.message ? 'text-xs -top-2 text-primary z-10 bg-white px-1' : 'text-muted-foreground top-3'
-                      }`}
-                    >
-                      Your Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formState.message}
-                      onChange={handleChange}
-                      onFocus={() => handleFocus('message')}
-                      onBlur={() => handleBlur('message')}
-                      required
-                      rows={5}
-                      className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none resize-none"
-                    />
-                  </div>
-                  
-                  <div>
-                    <AnimatedButton 
-                      type="submit" 
-                      variant="primary" 
-                      className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 transition-all duration-300"
-                    >
-                      Send Message
-                      <Send size={16} className="ml-2" />
-                    </AnimatedButton>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div> */}
-          
-          <div className={`transition-all duration-700 delay-300 lg:col-span-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            <div className="bg-gradient-to-br from-primary to-blue-600 text-white justify-center rounded-2xl shadow-lg p-8 md:p-10 h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
-              {/* <h3 className="text-2xl font-bold mb-8 text-center">Contact Information</h3> */}
-              
+        <div className="flex justify-center items-center">
+          {/* Apple-style contact card - centered on page */}
+          <div 
+            className={`transition-all duration-700 delay-300 max-w-md ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+            style={{ width: '100%' }}
+          >
+            <div className="bg-gradient-to-br from-primary to-blue-600 text-white rounded-2xl shadow-lg p-8 md:p-10 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 backdrop-blur-sm">
               <div className="space-y-8">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start gap-4 hover:-translate-y-1 transition-transform duration-300">
@@ -206,12 +111,6 @@ const Contact = () => {
                   </div>
                 ))}
               </div>
-              
-              {/* <div className="mt-12">
-                <h4 className="text-lg font-semibold mb-4">Office Hours</h4>
-                <p className="mb-2">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                <p>Saturday - Sunday: Closed</p>
-              </div> */}
               
               <div className="absolute bottom-8 right-8 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
             </div>

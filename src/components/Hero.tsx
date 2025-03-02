@@ -29,15 +29,35 @@ const Hero = () => {
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
+        // Calculate normalized position (0-1)
         const x = (e.clientX - rect.left) / rect.width;
         const y = (e.clientY - rect.top) / rect.height;
-        setMousePosition({ x, y });
+        
+        // Use requestAnimationFrame for smoother updates
+        requestAnimationFrame(() => {
+          setMousePosition({ x, y });
+        });
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    // Throttle the mouse move event for better performance
+    let throttleTimeout: number | null = null;
+    const throttledHandleMouseMove = (e: MouseEvent) => {
+      if (!throttleTimeout) {
+        throttleTimeout = window.setTimeout(() => {
+          throttleTimeout = null;
+          handleMouseMove(e);
+        }, 16); // ~60fps
+      }
+    };
+
+    window.addEventListener('mousemove', throttledHandleMouseMove);
+    
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousemove', throttledHandleMouseMove);
+      if (throttleTimeout) {
+        clearTimeout(throttleTimeout);
+      }
     };
   }, []);
 
@@ -46,8 +66,9 @@ const Hero = () => {
       ref={containerRef}
       className="relative min-h-screen flex items-center px-4 overflow-hidden"
       style={{ 
-        background: `radial-gradient(circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, rgba(139, 92, 246, 0.15), rgba(8, 15, 40, 0.05))`,
-        transition: 'background 0.3s ease-out'
+        backgroundImage: `radial-gradient(circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, rgba(139, 92, 246, 0.15), rgba(8, 15, 40, 0.05))`,
+        backgroundSize: '200% 200%',
+        transition: 'background-image 0.8s cubic-bezier(0.22, 1, 0.36, 1)',
       }}
     >
       {/* Floating elements with smoother animations */}
@@ -65,7 +86,8 @@ const Hero = () => {
               transform: `translate3d(${(mousePosition.x - 0.5) * 20 * (index % 5 - 2)}px, ${(mousePosition.y - 0.5) * 20 * (index % 3 - 1)}px, 0)`,
               filter: `blur(${Math.random() * 40 + 5}px)`,
               opacity: Math.random() * 0.5 + 0.2,
-              transition: 'transform 0.3s ease-out',
+              transition: 'transform 1s cubic-bezier(0.22, 1, 0.36, 1)',
+              willChange: 'transform',
             }}
           ></div>
         ))}
