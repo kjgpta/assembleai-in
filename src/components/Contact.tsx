@@ -86,21 +86,22 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" ref={contactRef} className="section-padding bg-white">
+    <section id="contact" ref={contactRef} className="section-padding bg-gray-50">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16 animated-element">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Get in Touch
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-600 animate-fade-up">
+            Contact Us
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <div className="w-24 h-1 mx-auto bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mb-6 animate-scale-in"></div>
+          <p className="text-lg text-gray-500 max-w-2xl mx-auto animate-fade-in">
             Have questions about our AI tools or interested in a custom solution? Contact us today.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
-              <h3 className="text-2xl font-bold mb-6">Send Us a Message</h3>
+            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10 hover:shadow-xl transition-all duration-500">
+              <h3 className="text-2xl font-bold mb-6 text-gray-800">Send Us a Message</h3>
               
               <form onSubmit={handleSubmit}>
                 <div className="space-y-6">
@@ -171,7 +172,11 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <AnimatedButton type="submit" variant="primary" className="w-full">
+                    <AnimatedButton 
+                      type="submit" 
+                      variant="primary" 
+                      className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 transition-all duration-300"
+                    >
                       Send Message
                       <Send size={16} className="ml-2" />
                     </AnimatedButton>
@@ -182,12 +187,12 @@ const Contact = () => {
           </div>
           
           <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            <div className="bg-gradient-to-br from-primary to-blue-600 text-white rounded-2xl shadow-lg p-8 md:p-10 h-full">
+            <div className="bg-gradient-to-br from-primary to-blue-600 text-white rounded-2xl shadow-lg p-8 md:p-10 h-full hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
               <h3 className="text-2xl font-bold mb-8">Contact Information</h3>
               
               <div className="space-y-8">
                 {contactInfo.map((info, index) => (
-                  <div key={index} className="flex items-start gap-4">
+                  <div key={index} className="flex items-start gap-4 hover:-translate-y-1 transition-transform duration-300">
                     <div className="mt-1 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                       {info.icon}
                     </div>

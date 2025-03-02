@@ -15,15 +15,6 @@ const Footer = () => {
         { label: "Conversational AI", href: "#" },
       ],
     },
-    {
-      title: "Contact",
-      links: [
-        { label: "Support", href: "#" },
-        { label: "Sales", href: "#" },
-        { label: "Partnership", href: "#" },
-        { label: "Feedback", href: "#" },
-      ],
-    },
   ];
 
   return (
@@ -43,6 +34,7 @@ const Footer = () => {
               Empowering businesses with cutting-edge GPT and machine learning tools to drive innovation and solve complex problems.
             </p>
             
+            {/* Social media links commented out
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center hover:bg-violet-200 transition-colors text-violet-700">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -72,6 +64,7 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
+            */}
           </div>
           
           {footerLinks.map((column, idx) => (
