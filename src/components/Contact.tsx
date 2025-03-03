@@ -71,7 +71,7 @@ const Contact = () => {
     {
       icon: <Mail size={20} />,
       label: "Email",
-      value: "mailguptakshitij@gmail.com",
+      value: "contact.assembleai@gmail.com",
     },
   ];
 
