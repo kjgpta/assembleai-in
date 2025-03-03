@@ -187,14 +187,14 @@ const Products = () => {
                     <PenSquare size={18} className="mr-2 transition-transform group-hover:scale-110" />
                     <span className="group-hover:translate-x-0.5 transition-transform">Check it Out!</span>
                   </a>
-                  
+                  {/*
                   <a 
                     href={feature.codeUrl} 
                     className="group flex items-center px-4 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600 rounded-md transition-all duration-300"
                   >
                     <Github size={18} className="mr-2 transition-transform group-hover:rotate-12" />
                     <span>Source Code</span>
-                  </a>
+                  </a>*/}
                 </div>
               </div>
               
